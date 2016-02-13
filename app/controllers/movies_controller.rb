@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
     
     session[:ratings] ||= @all_ratings
     session[:sort_by] ||= ""
+    session.clear
     
     if params.size == 2
       params[:ratings] ||= session[:ratings]
