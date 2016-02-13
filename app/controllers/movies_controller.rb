@@ -15,20 +15,17 @@ class MoviesController < ApplicationController
     
     session[:ratings] ||= @all_ratings
     session[:sort_by] ||= ""
-
-    # @selected_ratings = session[:ratings]
     
-    if params[:ratings]
-      session[:ratings] = params[:ratings].keys
-      # @selected_ratings = session[:ratings].keys
-      # @movies = Movie.where(rating: @selected_ratings)
-    elsif params[:sort_by]
-      session[:sort_by] = params[:sort_by]
-      # @sort_by = session[:sort_by]
-      # @movies = Movie.all.order(@sort_by)
-    else
-      # @movies = Movie.all
+    if params.size > 2
+      if params[:ratings]
+        session[:ratings] = params[:ratings].keys
+      elsif params[:sort_by]
+        session[:sort_by] = params[:sort_by]
+      end
+      redirect_to movies_path
     end
+    
+    
     @selected_ratings = session[:ratings]
     @sort_by = session[:sort_by]
     @movies = Movie.where(rating: @selected_ratings).order(@sort_by)
