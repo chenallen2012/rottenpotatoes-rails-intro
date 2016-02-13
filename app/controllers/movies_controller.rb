@@ -13,8 +13,6 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.get_ratings
     
-    session.clear
-    
     session[:ratings] ||= @all_ratings
     session[:sort_by] ||= ""
     
