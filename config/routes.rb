@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   
-  get '/title_sort' => 'movies#title_sort' 
-  
-  get '/release_sort' => 'movies#release_sort'
   
   root 'movies#index'
 
